@@ -24,6 +24,9 @@ function AuthContextProvider({ children }: AuthContextProviderProps) {
   const signIn = async () => {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "github",
+      options: {
+        redirectTo: "https://chat-supabase-chi.vercel.app/",
+      },
     })
     if (error) {
       console.error(error)
